@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Book;
-use Illuminate\Http\Request;
+use App\Http\Requests\Book as BookRequest;
+use Illuminate\Http\{Request, RedirectResponse};
 
 class BookController extends Controller
 {
@@ -21,22 +22,28 @@ class BookController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
-        //
+        return view('books.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param BookRequest $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(BookRequest $request)
     {
-        //
+        $book = new Book();
+        $book->name = $request->name;
+        $book->year_of_writing = $request->year_of_writing;
+        $book->number_of_pages = $request->number_of_pages;
+        $book->save();
+
+        return redirect()->route('books.index')->with('success', 'Книга добавлена');
     }
 
     /**
