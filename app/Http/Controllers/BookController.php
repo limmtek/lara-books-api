@@ -10,11 +10,12 @@ class BookController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        //
+        $books = Book::orderBy('id', 'desc')->paginate(10);
+        return view('books.index', compact('books'));
     }
 
     /**
