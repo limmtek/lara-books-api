@@ -9,9 +9,11 @@
 
                     <div class="card-header">
                         Книги
-                        <a href="{{ route('books.create') }}">
-                            <button type="button" class="btn btn-success">Добавить новую книгу</button>
-                        </a>
+                        @auth
+                            <a href="{{ route('books.create') }}">
+                                <button type="button" class="btn btn-success">Добавить новую книгу</button>
+                            </a>
+                        @endauth
                     </div>
                     <table class="table table-striped table-bordered">
                         <thead class="thead-dark">
@@ -20,7 +22,9 @@
                             <th scope="col">Название</th>
                             <th scope="col">Дата написания</th>
                             <th scope="col">Количество страниц</th>
-                            <th scope="col">Действия</th>
+                            @auth
+                                <th scope="col">Действия</th>
+                            @endauth
                         </tr>
                         </thead>
                         <tbody>
@@ -30,14 +34,16 @@
                                 <td>{{ $book->name }}</td>
                                 <td>{{ $book->year_of_writing }}</td>
                                 <td>{{ $book->number_of_pages }}</td>
-                                <td>
-                                    <a href="{{ route('books.edit', $book->id) }}"><button type="button" class="btn btn-primary">Изменить</button></a>
-                                    <form action="{{ route('books.destroy', $book->id) }}" method="POST" style="display: inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Удалить</button>
-                                    </form>
-                                </td>
+                                @auth
+                                    <td>
+                                        <a href="{{ route('books.edit', $book->id) }}"><button type="button" class="btn btn-primary">Изменить</button></a>
+                                        <form action="{{ route('books.destroy', $book->id) }}" method="POST" style="display: inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Удалить</button>
+                                        </form>
+                                    </td>
+                                @endauth
                             </tr>
                         @endforeach
                         </tbody>
