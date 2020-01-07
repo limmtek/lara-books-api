@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Book
@@ -17,4 +18,5 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Book extends Model
 {
+    use SoftDeletes;
 }
