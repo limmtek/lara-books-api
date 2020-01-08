@@ -8,10 +8,10 @@
                 <div class="card">
 
                     <div class="card-header">
-                        Книги
+                        {{ __('Books') }}
                         @auth
                             <a href="{{ route('books.create') }}">
-                                <button type="button" class="btn btn-success">Добавить новую книгу</button>
+                                <button type="button" class="btn btn-success">{{ __('Add a new book') }}</button>
                             </a>
                         @endauth
                     </div>
@@ -23,7 +23,7 @@
                             <th scope="col">Дата написания</th>
                             <th scope="col">Количество страниц</th>
                             @auth
-                                <th scope="col">Действия</th>
+                                <th scope="col">{{ __('Actions') }}</th>
                             @endauth
                         </tr>
                         </thead>
@@ -36,11 +36,11 @@
                                 <td>{{ $book->number_of_pages }}</td>
                                 @auth
                                     <td>
-                                        <a href="{{ route('books.edit', $book->id) }}"><button type="button" class="btn btn-primary">Изменить</button></a>
+                                        <a href="{{ route('books.edit', $book->id) }}"><button type="button" class="btn btn-primary">{{ __('Edit') }}</button></a>
                                         <form action="{{ route('books.destroy', $book->id) }}" method="POST" style="display: inline">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Удалить</button>
+                                            <button type="submit" class="btn btn-danger">{{ __('Delete') }}</button>
                                         </form>
                                     </td>
                                 @endauth

@@ -15,7 +15,7 @@
                     </div>
                 @endif
                 <div class="card">
-                    <div class="card-header">Добавить книгу</div>
+                    <div class="card-header">{{ __('Add a new book') }}</div>
 
                     <div class="card-body">
                         <form method="POST" action="{{ route('books.store') }}" autocomplete="off">
@@ -65,7 +65,7 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
                                 </div>
                             </div>
                         </form>

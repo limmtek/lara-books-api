@@ -32,10 +32,10 @@ class IndexTest extends TestCase
         factory(Book::class, 100)->create();
 
         $this->visit('/books')
-            ->dontSee('Добавить новую книгу')
-            ->dontSee('Действия')
-            ->dontSee('Изменить')
-            ->dontSee('Удалить');
+            ->dontSee(__('Add a new book'))
+            ->dontSee(__('Actions'))
+            ->dontSee(__('Edit'))
+            ->dontSee(__('Delete'));
     }
 
     public function testActionLinksForAuthUser()
@@ -45,10 +45,10 @@ class IndexTest extends TestCase
         factory(Book::class, 100)->create();
 
         $this->actingAs($user)->visit('/books')
-            ->see('Добавить новую книгу')
-            ->see('Действия')
-            ->see('Изменить')
-            ->see('Удалить');
+            ->see(__('Add a new book'))
+            ->see(__('Actions'))
+            ->see(__('Edit'))
+            ->see(__('Delete'));
     }
 
     public function testCheckCreateLink()
@@ -57,7 +57,7 @@ class IndexTest extends TestCase
 
         $this->actingAs($user)
             ->visit('/books')
-            ->click('Добавить новую книгу')
+            ->click(__('Add a new book'))
             ->seePageIs('/books/create');
     }
 }

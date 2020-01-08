@@ -37,9 +37,9 @@ class CreateTest extends TestCase
             ->type($book->name, 'name')
             ->type($book->year_of_writing, 'year_of_writing')
             ->type($book->number_of_pages, 'number_of_pages')
-            ->press('Сохранить')
+            ->press(__('Save'))
             ->seePageIs('/books')
-            ->see('Книга добавлена');
+            ->see(__('Book was added successfully'));
 
         $this->seeInDatabase('books', [
             'name' => $book->name,

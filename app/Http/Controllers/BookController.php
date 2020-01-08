@@ -49,7 +49,7 @@ class BookController extends Controller
         $book->number_of_pages = $request->number_of_pages;
         $book->save();
 
-        return redirect()->route('books.index')->with('success', 'Книга добавлена');
+        return redirect()->route('books.index')->with('success', __('Book was added successfully'));
     }
 
     /**
@@ -91,6 +91,6 @@ class BookController extends Controller
     {
         $book->delete();
 
-        return redirect()->route('books.index')->with('success', 'Книга успешно удалена');
+        return redirect()->route('books.index')->with('success', __('Book was deleted successfully'));
     }
 }

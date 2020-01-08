@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Edit book <b>#ID {{ $book->id }}</b> </div>
+                    <div class="card-header">{{ __('Edit a book') }} <b>#ID {{ $book->id }}</b></div>
 
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -72,7 +72,7 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                                    <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
                                 </div>
                             </div>
                         </form>
